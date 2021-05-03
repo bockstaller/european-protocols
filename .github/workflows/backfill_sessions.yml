@@ -20,7 +20,7 @@ jobs:
         directory: "sessions"
         refresh: "--refresh"
         backfill: "--backfill"
-        rules: "-r agenda_en_html daily_agenda_en_html protocol_en_html named_voting_en_pdf voting_overview_en_html word_protocol_en_html"
+        rules: "-r agenda_en_html daily_agenda_en_html protocol_en_html named_voting_fr_xml voting_overview_en_html word_protocol_en_html"
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
