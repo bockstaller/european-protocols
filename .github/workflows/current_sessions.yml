@@ -18,7 +18,7 @@ jobs:
         document-type: "sessions"
         directory: "sessions"
         backfill: "--backfill"
-        rules: "-r agenda_en_html -r daily_agenda_en_html -r protocol_en_html -r named_voting_en_html -r voting_overview_en_html -r word_protocol_en_html"
+        rules: "-r agenda_en_html daily_agenda_en_html protocol_en_html named_voting_en_html voting_overview_en_html word_protocol_en_html"
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
