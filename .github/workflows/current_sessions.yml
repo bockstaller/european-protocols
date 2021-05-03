@@ -4,7 +4,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron:  '7 * * * *'
+    - cron:  '7 2 * * *'
 
 jobs:
   scheduled:
@@ -18,7 +18,7 @@ jobs:
         document-type: "sessions"
         directory: "sessions"
         backfill: "--backfill"
-        rules: "-r protocol_en_html"
+        rules: "-r agenda_en_html -r daily_agenda_en_html -r protocol_en_html -r named_voting_en_html -r voting_overview_en_html -r word_protocol_en_html"
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
