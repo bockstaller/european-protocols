@@ -1,13 +1,13 @@
-name: Scrape latest data
+name: Backfill old data
 
 on:
   push:
   workflow_dispatch:
   schedule:
-    - cron:  '6 2 * * *'
+    - cron:  '6,16,36,46 * * * *'
 
 jobs:
-  current_sessions:
+  backfill:
     runs-on: ubuntu-latest
     concurrency: crawling
     steps:
@@ -19,6 +19,7 @@ jobs:
         document-type: "sessions"
         directory: "sessions"
         refresh: "--refresh"
+        backfill: "--backfill"
         rules: "-r agenda_en_html daily_agenda_en_html protocol_en_html named_voting_en_html voting_overview_en_html word_protocol_en_html"
     - name: Commit and push if it changed
       run: |-
@@ -26,5 +27,5 @@ jobs:
         git config user.email "actions@users.noreply.github.com"
         git add -A
         timestamp=$(date -u)
-        git commit -m "Latest data: ${timestamp}" || exit 0
+        git commit -m "Backfilling data: ${timestamp}" || exit 0
         git push
